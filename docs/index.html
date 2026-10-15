@@ -3,18 +3,31 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hera Audio, le DAW des beatmakers</title>
-<meta name="description" content="Hera Audio : un DAW pour Windows pensé pour ceux qui font des prods sur FL Studio. Channel rack, piano roll, playlist, mixer, import des projets .flp. 19,99 € une fois, essai gratuit 14 jours.">
+<title>Hera Audio, le studio des beatmakers</title>
+<meta name="description" content="Hera Audio : le studio Windows des beatmakers, des ingés son et des artistes. Tes projets FL Studio s'ouvrent dedans. 19,99 € une fois, essai gratuit 14 jours.">
 <meta property="og:title" content="Hera Audio">
-<meta property="og:description" content="Le DAW des beatmakers. Ouvre tes projets FL, garde tes réflexes. 19,99 € une fois.">
+<meta property="og:description" content="Le studio des beatmakers, des ingés son et des artistes. 19,99 € une fois.">
 <meta property="og:image" content="img/playlist.png">
+<meta name="theme-color" content="#000000">
 <link rel="icon" href="img/icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="intro-on">
+
+<!-- Intro : le logo sort du flou, une onde se dessine, puis tout s'ouvre. Clic ou touche : passer. -->
+<div class="intro" aria-hidden="true">
+  <div class="intro-glow"></div>
+  <div class="intro-word"><span>H</span><span>E</span><span>R</span><span>A</span></div>
+  <svg class="intro-wave" viewBox="0 0 600 80" preserveAspectRatio="none"><path d="M0 40 C 40 40 50 8 75 8 S 110 72 135 72 S 170 14 195 14 S 230 64 255 64 S 290 22 315 22 S 350 56 375 56 S 410 30 435 30 S 470 48 495 48 S 540 40 600 40"/></svg>
+  <p class="intro-sub">Audio</p>
+</div>
+
+<div class="ambient" aria-hidden="true"><i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i></div>
+<div class="grain" aria-hidden="true"></div>
+
 <a class="skip" href="#contenu">Aller au contenu</a>
 
 <header class="top">
@@ -23,27 +36,84 @@
     <span>Hera Audio</span>
   </a>
   <nav aria-label="Navigation principale">
-    <a href="#fonctions">Fonctions</a>
+    <a href="#pour-qui">Pour qui</a>
+    <a href="#plus-vite">Pourquoi Hera</a>
+    <a href="#essaie">Essayer</a>
     <a href="#prix">Prix</a>
-    <a href="#questions">Questions</a>
-    <a href="#" data-link="account">Mon compte</a>
   </nav>
   <a class="btn btn-small" href="#" data-link="buy">Acheter</a>
 </header>
 
 <main id="contenu">
   <section class="hero">
-    <h1 class="hero-title">Fais<br>le beat.</h1>
-    <div class="hero-side">
-      <p class="lede">Un DAW pour Windows fait pour ceux qui viennent de FL Studio. Channel rack, piano roll, playlist en patterns, mixer avec ses envois : tu retrouves tes réflexes, et tu ouvres tes projets .flp directement.</p>
-      <div class="actions">
-        <a class="btn btn-main" href="#" data-link="download">Télécharger l'essai gratuit</a>
-        <a class="btn btn-ghost" href="#" data-link="buy">Acheter pour 19,99 €</a>
-      </div>
-      <p class="fine">Windows 10 et 11, 64 bits. Essai complet pendant 14 jours, sans carte bancaire.</p>
+    <h1 class="hero-title"><span class="line">Fais</span><span class="line">le beat.</span></h1>
+    <p class="lede">Le studio Windows des beatmakers, des ingés son et des artistes. Tes projets FL Studio s'ouvrent dedans, tes réflexes aussi.</p>
+    <div class="actions">
+      <a class="btn btn-main" href="#" data-link="download">Télécharger l'essai gratuit</a>
+      <a class="btn btn-glass" href="#" data-link="buy">Acheter pour 19,99 €</a>
+    </div>
+    <p class="fine">Windows 10 et 11. Essai complet 14 jours, sans carte bancaire.</p>
+    <div class="stage">
+      <figure class="screen">
+        <img src="img/playlist.png" alt="Hera Audio avec un projet FL ouvert : playlist, patterns et browser" width="1598" height="898">
+      </figure>
+    </div>
+  </section>
+
+  <section class="who" id="pour-qui">
+    <h2 class="reveal">Un studio, trois façons de bosser.</h2>
+    <div class="tabs" role="tablist" aria-label="Pour qui">
+      <button role="tab" id="t-beat" aria-controls="p-beat" aria-selected="true">Beatmaker</button>
+      <button role="tab" id="t-inge" aria-controls="p-inge" aria-selected="false" tabindex="-1">Ingé son</button>
+      <button role="tab" id="t-art" aria-controls="p-art" aria-selected="false" tabindex="-1">Artiste</button>
     </div>
 
-    <div class="rack" aria-label="Séquenceur à pas : clique les cases puis lance la lecture">
+    <div class="panel" role="tabpanel" id="p-beat" aria-labelledby="t-beat">
+      <p class="panel-lede">Tu viens de FL : tout est à sa place, et ça va plus vite.</p>
+      <ul class="mods">
+        <li><strong>Tes .flp s'ouvrent</strong><span>Patterns, playlist, canaux, mixer, automations et réglages des plugins repris.</span></li>
+        <li><strong>Channel rack et pas</strong><span>Le séquenceur, les canaux, tes samples et tes VST, comme tu les ranges déjà.</span></li>
+        <li><strong>Piano roll avec accords</strong><span>Accords, gammes, Riff machine, vélocité au zoom, triolets.</span></li>
+        <li><strong>Key &amp; BPM</strong><span>Glisse un sample : sa tonalité et son tempo s'affichent.</span></li>
+      </ul>
+    </div>
+    <div class="panel" role="tabpanel" id="p-inge" aria-labelledby="t-inge" hidden>
+      <p class="panel-lede">Le mix et le master, sans aller chercher un plugin pour tout.</p>
+      <ul class="mods">
+        <li><strong>Analyse du master</strong><span>LUFS, crête, spectre et image stéréo dans leur propre colonne, à côté du mixer.</span></li>
+        <li><strong>EQ dynamique</strong><span>Chaque bande peut réagir au signal : seuil, plage et vitesse.</span></li>
+        <li><strong>Envois par câbles</strong><span>Un clic pour relier, un bouton de niveau sur chaque lien, sidechain inclus.</span></li>
+        <li><strong>Latence sous contrôle</strong><span>Compensation automatique, réglable tranche par tranche.</span></li>
+      </ul>
+    </div>
+    <div class="panel" role="tabpanel" id="p-art" aria-labelledby="t-art" hidden>
+      <p class="panel-lede">Tu poses ta voix, tu sors ton morceau. C'est tout.</p>
+      <ul class="mods">
+        <li><strong>Piste voix en un clic</strong><span>Micro armé, chaîne de traitement et envoi en réverbe, prêts à enregistrer.</span></li>
+        <li><strong>La prise en direct</strong><span>La forme d'onde se dessine pendant que tu enregistres.</span></li>
+        <li><strong>Versions du morceau</strong><span>Garde plusieurs arrangements du même son et passe de l'un à l'autre.</span></li>
+        <li><strong>Galerie des projets</strong><span>Tes sons avec leur pochette, et leurs exports à réécouter.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="faster" id="plus-vite">
+    <h2 class="reveal">Ce qui va plus vite ici.</h2>
+    <ul class="rows-big">
+      <li class="reveal"><h3>Tout exporter d'un coup.</h3><p>EasyExport sort le mixage en WAV et MP3, le MIDI, les pistes du mixer et chaque canal, rangés dans leurs dossiers.</p></li>
+      <li class="reveal"><h3>Ouvrir ton projet FL.</h3><p>Glisse ton .flp : le morceau est là, avec ses volumes, ses envois et ses automations.</p></li>
+      <li class="reveal"><h3>Voir ton LUFS en jouant.</h3><p>Le niveau du master s'affiche en permanence à côté du mixer, sans rien ajouter.</p></li>
+      <li class="reveal"><h3>Couper tous les effets.</h3><p>Un interrupteur par tranche, un autre pour tout le projet : tu compares en une seconde.</p></li>
+      <li class="reveal"><h3>Rester à jour.</h3><p>Hera te prévient quand une version sort et s'installe tout seul.</p></li>
+    </ul>
+  </section>
+
+  <section class="try" id="essaie">
+    <div class="try-head reveal">
+      <h2>Essaie le Channel rack. Là.</h2>
+      <p>Clique les cases, puis lecture. Espace marche aussi.</p>
+    </div>
+    <div class="rack reveal" aria-label="Séquenceur à pas : clique les cases puis lance la lecture">
       <div class="rack-head">
         <button class="play" type="button" aria-pressed="false" aria-label="Lire le pattern">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-play" d="M7 5l12 7-12 7z"/><path class="i-stop" d="M6 6h12v12H6z"/></svg>
@@ -56,73 +126,43 @@
         <button class="clear" type="button">Vider</button>
       </div>
       <div class="rows"></div>
-      <p class="rack-tip">Clique les cases pour écrire ton rythme, comme dans le Channel rack.</p>
     </div>
   </section>
 
-  <section class="shot" aria-label="Capture du logiciel">
-    <figure>
-      <img src="img/playlist.png" alt="Hera Audio : la playlist d'un morceau, avec ses patterns Beat, Bass, Rhode et String, le browser à gauche" loading="lazy" width="1598" height="898">
-      <figcaption>Un projet FL ouvert dans Hera Audio : patterns, playlist, mixer et browser au même endroit.</figcaption>
-    </figure>
-  </section>
-
-  <section class="paper" id="fonctions">
-    <div class="paper-inner">
-      <h2>Ce que tu retrouves en ouvrant Hera</h2>
-      <dl class="features">
-        <div><dt>Tes projets FL</dt><dd>Ouvre un .flp : patterns, playlist, canaux, mixer, automations et réglages des plugins sont repris.</dd></div>
-        <div><dt>Channel rack et pas</dt><dd>Le séquenceur à pas, les canaux, les samples et tes VST, rangés comme tu en as l'habitude.</dd></div>
-        <div><dt>Piano roll</dt><dd>Accords, gammes, glisser-étirer, vélocité au zoom, triolets.</dd></div>
-        <div><dt>Mixer complet</dt><dd>125 inserts, envois par câbles, sidechain, EQ par tranche, compensation de latence, analyse LUFS du master.</dd></div>
-        <div><dt>Effets intégrés</dt><dd>Limiteur, compresseur, EQ dynamique, réverbe, delay, soft clipper, ampli et distorsion.</dd></div>
-        <div><dt>Tes plugins</dt><dd>VST3 et VST2, 64 et 32 bits, avec leurs presets.</dd></div>
-        <div><dt>Export</dt><dd>WAV, MP3, OGG, FLAC, MIDI, pistes séparées, et EasyExport pour tout sortir d'un coup.</dd></div>
-        <div><dt>Mises à jour</dt><dd>Hera te prévient quand une version sort et s'installe tout seul.</dd></div>
-      </dl>
-
-      <div class="pair">
-        <figure>
-          <img src="img/mixer.png" alt="Le mixer de Hera Audio avec ses tranches, ses envois et l'analyse du master" loading="lazy" width="1236" height="714">
-          <figcaption>Le mixer : envois en un clic, niveau sur chaque câble.</figcaption>
-        </figure>
-        <figure>
-          <img src="img/rack.png" alt="Le Channel rack de Hera Audio avec les canaux d'un projet FL importé" loading="lazy" width="1598" height="898">
-          <figcaption>Le Channel rack d'un projet FL, ouvert tel quel.</figcaption>
-        </figure>
-      </div>
-    </div>
+  <section class="gallery" aria-label="Captures du logiciel">
+    <figure class="reveal"><img src="img/mixer.png" alt="Le mixer : tranches, envois par câbles et analyse du master" loading="lazy" width="1236" height="714"><figcaption>Le mixer et l'analyse du master.</figcaption></figure>
+    <figure class="reveal"><img src="img/rack.png" alt="Le Channel rack d'un projet FL ouvert dans Hera Audio" loading="lazy" width="1598" height="898"><figcaption>Un projet FL ouvert tel quel.</figcaption></figure>
   </section>
 
   <section class="price" id="prix">
-    <h2>Un prix, une fois.</h2>
-    <p class="amount"><span>19,99</span> €</p>
-    <ul class="includes">
+    <h2 class="reveal">Un prix. Une fois.</h2>
+    <p class="amount reveal"><span>19,99</span> €</p>
+    <ul class="includes reveal">
       <li>Toutes les mises à jour de la version 1</li>
       <li>Utilisable sur 3 ordinateurs</li>
       <li>14 jours d'essai complet avant de payer</li>
       <li>TVA et facture gérées automatiquement</li>
     </ul>
-    <div class="actions">
+    <div class="actions reveal">
       <a class="btn btn-main" href="#" data-link="buy">Acheter Hera Audio</a>
-      <a class="btn btn-ghost" href="#" data-link="download">Essayer d'abord</a>
+      <a class="btn btn-glass" href="#" data-link="download">Essayer d'abord</a>
     </div>
-    <p class="fine">Après l'achat, ta clé de licence arrive par e-mail. Dans Hera : Options, puis Licence, puis colle la clé.</p>
+    <p class="fine">Après l'achat, ta clé arrive par e-mail. Dans Hera : Options, Licence, colle la clé.</p>
   </section>
 
   <section class="faq" id="questions">
-    <h2>Questions</h2>
+    <h2 class="reveal">Questions</h2>
     <details>
       <summary>Qu'est-ce qui se passe à la fin de l'essai ?</summary>
       <p>Hera s'ouvre toujours et tes projets restent lisibles. Pour enregistrer et exporter, il faut activer une licence.</p>
     </details>
     <details>
       <summary>Mes projets FL Studio s'ouvrent vraiment ?</summary>
-      <p>Oui, les fichiers .flp récents (FL 20 à FL 26). Les plugins natifs de FL sont remplacés par l'effet Hera le plus proche avec leurs réglages quand c'est possible ; tes VST sont rechargés avec leurs presets.</p>
+      <p>Oui, les fichiers .flp récents (FL 20 à FL 26). Les effets natifs de FL sont remplacés par l'effet Hera le plus proche, avec leurs réglages quand c'est possible ; tes VST sont rechargés avec leurs presets.</p>
     </details>
     <details>
       <summary>Je change d'ordinateur, je fais comment ?</summary>
-      <p>Dans Hera, Options puis Licence puis « Retirer de ce PC », ou depuis ton espace client. Tu peux ensuite activer la clé sur le nouveau PC.</p>
+      <p>Dans Hera : Options, Licence, « Retirer de ce PC », ou depuis ton espace client. Active ensuite la clé sur le nouveau PC.</p>
     </details>
     <details>
       <summary>Ça marche sur Mac ?</summary>

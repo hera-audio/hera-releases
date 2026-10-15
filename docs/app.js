@@ -155,3 +155,76 @@ document.addEventListener("keydown", (e) => {
     e.preventDefault(); setPlaying(!playing);   // Espace = lecture, comme dans FL
   }
 });
+
+// ------------------------------------------------------------ intro
+// Le logo sort du flou, l'onde se dessine, puis l'ecran s'ouvre (une fois par visite).
+(function intro() {
+  const el = document.querySelector(".intro");
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let seen = false;
+  try { seen = sessionStorage.getItem("hera-intro") === "1"; } catch (_) {}
+  const reveal = () => { document.body.classList.remove("intro-on"); document.body.classList.add("ready"); };
+  if (!el || reduce || seen) { if (el) el.remove(); reveal(); return; }
+  let done = false;
+  const finish = () => {
+    if (done) return;
+    done = true;
+    try { sessionStorage.setItem("hera-intro", "1"); } catch (_) {}
+    el.classList.add("out");
+    setTimeout(reveal, 250);
+    setTimeout(() => el.remove(), 1200);
+  };
+  setTimeout(finish, 2600);
+  el.addEventListener("click", finish);
+  window.addEventListener("keydown", finish, { once: true });
+})();
+
+// ------------------------------------------------------------ apparitions au defilement
+(function reveals() {
+  const items = document.querySelectorAll(".reveal");
+  if (!("IntersectionObserver" in window)) { items.forEach((i) => i.classList.add("in")); return; }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.15, rootMargin: "0px 0px -8% 0px" });
+  items.forEach((i) => io.observe(i));
+})();
+
+// ------------------------------------------------------------ capture qui se redresse au defilement
+(function tilt() {
+  const screen = document.querySelector(".screen");
+  if (!screen || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    const r = screen.getBoundingClientRect();
+    const vh = window.innerHeight;
+    const p = Math.min(1, Math.max(0, (vh - r.top) / (vh * 0.9)));   // 0 en bas de l'ecran -> 1 bien visible
+    screen.style.setProperty("--tilt", `${(22 * (1 - p)).toFixed(2)}deg`);
+    screen.style.setProperty("--zoom", (0.92 + 0.08 * p).toFixed(3));
+  };
+  window.addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  update();
+})();
+
+// ------------------------------------------------------------ onglets "pour qui"
+(function tabs() {
+  const tabs = [...document.querySelectorAll('[role="tab"]')];
+  const select = (t, focus) => {
+    tabs.forEach((x) => {
+      const on = x === t;
+      x.setAttribute("aria-selected", String(on));
+      x.tabIndex = on ? 0 : -1;
+      const panel = document.getElementById(x.getAttribute("aria-controls"));
+      panel.hidden = !on;
+      if (on) { panel.classList.remove("enter"); void panel.offsetWidth; panel.classList.add("enter"); }
+    });
+    if (focus) t.focus();
+  };
+  tabs.forEach((t, i) => {
+    t.addEventListener("click", () => select(t, false));
+    t.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") select(tabs[(i + 1) % tabs.length], true);
+      if (e.key === "ArrowLeft") select(tabs[(i + tabs.length - 1) % tabs.length], true);
+    });
+  });
+})();
